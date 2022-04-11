@@ -19,16 +19,24 @@ class CardsController < ApplicationController
 
   def edit
     @card = Card.find(params[:id])
+    @lists = List.where(user: current_user)
   end
 
   def update
-    @card.find(params[:id])
+    @card = Card.find(params[:id])
     if @card.update(card_params)
       redirect_to :root
     else
       render :edit
     end
   end
+
+  def destroy
+  @card = Card.find(params[:id])
+  @card.destroy
+  redirect_to :root
+  end
+
   private
   def card_params
     params.require(:card).permit(:title,:memo,:list_id)

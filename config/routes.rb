@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'top#index'
   resources :users,only:[:edit,:update]
   resources :list, only: [:new,:create,:edit,:update,:destroy]do
-  resources :cards,only:[:new,:create,:show,:edit,:update]
+  resources :cards,only:[:new,:create,:show,:edit,:update,:destroy]
 end
 end
 
